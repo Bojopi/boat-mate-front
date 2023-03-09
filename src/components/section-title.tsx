@@ -12,7 +12,7 @@
                     <span className="text-5xl md:text-6xl font-bold mb-1">Maximizing connectivity</span>
                     <div className="text-4xl md:text-5xl text-sky-700 font-bold mb-10">in the boating industry</div>
 
-                    <Button label="Learn More" type="button" className="p-button p-button-secondary" />
+                    <Button label="Learn More" type="button" className="p-button p-button-secondary float-right mr-8" />
                 </section>
             </div>
             <div className="overflow-hidden md:block hidden">
