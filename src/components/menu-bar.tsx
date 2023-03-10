@@ -6,7 +6,6 @@ import { Toast } from 'primereact/toast';
 
 export default function MenuBar() {
     const menu = useRef<any>(null);
-    //const router = useRouter();
     const toast = useRef<any>(null);
 
     const itemsMenu = [
