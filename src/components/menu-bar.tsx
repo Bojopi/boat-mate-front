@@ -9,9 +9,14 @@ export default function MenuBar() {
     const toast = useRef<any>(null);
 
     const itemsMenu = [
-        { label: 'Sign up now', },
-        { label: 'Sign in' },
-        { label: 'Home' },
+        {
+            label: 'Sign up now',
+            url: '/register',
+        },
+        {
+            label: 'Sign in',
+            url: '/login',
+        },
         { separator: true, },
         {
             label: 'About Us',

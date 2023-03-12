@@ -6,11 +6,11 @@ import { Button } from 'primereact/button';
 type CardProps = {
     title:      string;
     btnLabel:   string;
-    textCard:   string;
-    image?:      string;
+    image?:     string;
+    children:   React.ReactNode;
 }
 
-const CardComponent: React.FC<CardProps> = ({title, btnLabel, textCard, image}) => {
+const CardComponent: React.FC<CardProps> = ({title, btnLabel, children, image}) => {
 
     const footer = (
         <div className="flex flex-wrap justify-end gap-2">
@@ -24,9 +24,7 @@ const CardComponent: React.FC<CardProps> = ({title, btnLabel, textCard, image}) 
                 <img src={image} className={'w-full h-full object-cover'} />
             </div>
             <Card title={title} footer={footer} className={image ? 'w-full md:h-full md:flex md:items-center rounded-t-none md:rounded-l-none' : 'w-full h-full flex items-center'}>
-                <p className="">
-                    {textCard}
-                </p>
+                {children}
             </Card>
         </div>
     )
