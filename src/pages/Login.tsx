@@ -7,8 +7,6 @@ import { InputWrapper } from '../components/react-hook-form/input-wrapper';
 import { Label } from '../components/react-hook-form/label';
 import { Input } from '../components/react-hook-form/input';
 import { ErrorMessage } from '../components/react-hook-form/error-message';
-import { InputText } from "primereact/inputtext";
-import { Button } from 'primereact/button';
 
 
 export type FormProps = {
@@ -16,7 +14,7 @@ export type FormProps = {
     password: string;
 }
 
-const Login: React.FC<FormProps> = () => {
+const Login: React.FC = () => {
     const toast = useRef<Toast>(null);
 
     const methods = useForm<FormProps>({
