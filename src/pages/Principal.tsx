@@ -16,6 +16,7 @@ const Principal = () => {
         </div>
         <div className="p-10 md:pl-28 md:pr-28 grid grid-cols-1 md:grid-cols-2 gap-5">
             <CardComponent
+            footerVisibility={true}
             btnLabel={'Learn more'}
             title={'Get Back on the Water'}
             image={'https://images.squarespace-cdn.com/content/v1/634f43133040660154fd193a/f2e2a6b9-78d1-40f1-869c-90b28a108d50/pexels-oliver-sjo%CC%88stro%CC%88m-1223648.jpg'}
@@ -24,6 +25,7 @@ const Principal = () => {
             </CardComponent>
 
             <CardComponent
+            footerVisibility={true}
             btnLabel={'Learn more'}
             title={'Own Your Business.'}
             image={'https://images.squarespace-cdn.com/content/v1/634f43133040660154fd193a/bab94901-e3d8-47a3-a744-8097993adce4/pexels-andrea-piacquadio-3823418.jpg'}
