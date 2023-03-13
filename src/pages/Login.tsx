@@ -88,7 +88,7 @@ const Login: React.FC = () => {
                                         <ErrorMessage>{errors.username.message}</ErrorMessage>
                                     )}
                                 </InputWrapper>
-                                <p className='w-full text-center text-sm font-medium text-[#373A85]'>New to BoatMate? <a href='/register' className='text-[#00CBA4] hover:underline'>Create an account</a></p>
+                                <p className='w-full text-center text-sm font-medium text-[#373A85]'>New to BoatMate? <a href='/register' className='text-[#00CBA4] hover:underline'>Create account</a></p>
                             </div>
 
                             <div className="mt-4 flex items-center justify-between">
