@@ -32,6 +32,10 @@ const Login: React.FC = () => {
 
     const onSubmit = (formData: FormProps) => {
         console.log(formData);
+        if(formData.username == 'bojopi' && formData.password == '123456') {window.location.href = '/'}
+        else {
+            console.log('no coinciden')
+            toast.current!.show({severity:'error', summary:'Error', detail: 'User and/or password are not correct'});}
     };
 
     const onErrors = () => {
@@ -40,13 +44,14 @@ const Login: React.FC = () => {
 
   return (
     <>
+        <Toast ref={toast} />
         <div
-            className="w-full h-1/3 rounded-b-md shadow-md md:h-screen absolute bg-no-repeat bg-cover bg-center"
+            className="w-full h-1/3 shadow-md md:h-screen absolute bg-no-repeat bg-cover bg-center"
             style={{'backgroundImage': "url('https://i.postimg.cc/qv8LyXWs/tomas-malik-FHAHn-F9-C0-Sw-unsplash.jpg')"}}>
             <div></div>
         </div>
         <div className="absolute container mx-auto mt-36 md:mt-36 p-5 md:flex md:justify-center">
-            <div className='bg-white w-full md:w-2/4 rounded-md shadow-2xl p-10 flex flex-col items-center'>
+            <div className='bg-white w-full md:w-2/4 rounded-lg shadow-2xl p-10 flex flex-col items-center'>
                 <div className='w-full flex justify-between'>
                     <img
                         src="https://images.squarespace-cdn.com/content/v1/634f43133040660154fd193a/07d993cf-6c35-46b4-a3d8-2c26c53b2958/Biggest_BoatMate-removebg-preview.png?format=1500w"
