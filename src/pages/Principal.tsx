@@ -8,7 +8,11 @@ const Principal = () => {
   return (
     <>
         <MenuBar />
-        <SectionTitle />
+        <SectionTitle 
+            title1="Maximizing connectivity"
+            title2="in the boating industry"
+            img="https://images.squarespace-cdn.com/content/v1/634f43133040660154fd193a/54c3355d-4b60-4ed9-a168-e45abec1ea61/nicol-JrMzz7jUD5s-unsplash.png"
+         />
         <hr />
         <div className="w-full p-10 md:pl-28 text-white" style={{'backgroundColor': '#00CBA4'}}>
             <h1 className="text-xl w-full md:text-4xl font-bold flex md:w-2/3 tracking-wide">The modern way to get connected with trustworthy and vetted marine service providers</h1>

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import {FormProvider, useForm} from "react-hook-form";
 
 import { Toast } from 'primereact/toast';
@@ -7,6 +7,7 @@ import { InputWrapper } from '../components/react-hook-form/input-wrapper';
 import { Label } from '../components/react-hook-form/label';
 import { Input } from '../components/react-hook-form/input';
 import { ErrorMessage } from '../components/react-hook-form/error-message';
+import Spinner from '../components/spinner';
 
 
 export type FormProps = {
@@ -16,6 +17,7 @@ export type FormProps = {
 
 const Login: React.FC = () => {
     const toast = useRef<Toast>(null);
+    const [loading, setLoading] = useState<boolean>(false);
 
     const methods = useForm<FormProps>({
         defaultValues: {
@@ -32,18 +34,28 @@ const Login: React.FC = () => {
 
     const onSubmit = (formData: FormProps) => {
         console.log(formData);
-        if(formData.username == 'bojopi' && formData.password == '123456') {window.location.href = '/'}
+        setLoading(true);
+        if(formData.username == 'bojopi' && formData.password == '123456') {
+            setTimeout(() => {
+                setLoading(false);
+                window.location.href = '/user';
+            }, 1000);
+        }
         else {
-            console.log('no coinciden')
-            toast.current!.show({severity:'error', summary:'Error', detail: 'User and/or password are not correct'});}
+            setTimeout(() => {
+                setLoading(false);
+                toast.current!.show({severity:'error', summary:'Error', detail: 'User and/or password are not correct', life: 4000});
+            }, 1000);
+        }
     };
 
     const onErrors = () => {
-        toast.current?.show({severity:'error', summary:'Error', detail: 'Existen errores en el formulario', life: 3000});
+        toast.current?.show({severity:'error', summary:'Error', detail: 'User and/or password are not correct', life: 4000});
     };
 
   return (
     <>
+        <Spinner loading={loading} />
         <Toast ref={toast} />
         <div
             className="w-full h-1/3 shadow-md md:h-screen absolute bg-no-repeat bg-cover bg-center"
