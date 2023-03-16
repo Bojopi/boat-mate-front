@@ -8,9 +8,10 @@
     title1: string;
     title2: string;
     img:    string;
+    btnLabel: string;
  }
 
- const SectionTitle: React.FC<SectionProps> = ({title1, title2, img}) => {
+ const SectionTitle: React.FC<SectionProps> = ({title1, title2, img, btnLabel}) => {
 
     return(
         <div className="grid grid-cols-1 md:grid-cols-2 font-bold pt-28 md:pt-40 mb-10 md:mb-20">
@@ -19,7 +20,7 @@
                     <span className="text-5xl md:text-6xl font-bold mb-1" style={{'color': '#373A85'}}>{title1}</span>
                     <div className="text-4xl md:text-5xl font-bold mb-10" style={{'color': '#109EDA'}}>{title2}</div>
 
-                    <Button label="Learn More" type="button" className="p-button p-button-secondary float-right mr-8" />
+                    <Button label={btnLabel} type="button" className="p-button p-button-secondary float-right mr-8" />
                 </section>
             </div>
             <div className="overflow-hidden h-[506px] md:block hidden">

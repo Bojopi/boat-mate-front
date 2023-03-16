@@ -1,10 +1,10 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom';
 
-const ServiceProvider = () => {
+const AdminLayout = () => {
   return (
-    <Outlet/>
+    <Outlet />
   )
 }
 
-export default ServiceProvider
+export default AdminLayout

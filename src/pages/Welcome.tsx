@@ -11,6 +11,7 @@ const Welcome = () => {
         <SectionTitle 
             title1="Welcome back"
             title2="Juan Perez"
+            btnLabel='View Categories'
             img="https://i.postimg.cc/mgt5kh39/angelina-herbert-T09mdb-YH8-Ac-unsplash.jpg"
         />
         <div className="w-full p-10 md:pl-28 text-white" style={{'backgroundColor': '#00CBA4'}}>

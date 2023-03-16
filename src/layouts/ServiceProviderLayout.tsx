@@ -1,10 +1,10 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom';
 
-const User = () => {
+const ServiceProviderLayout = () => {
   return (
-    <Outlet />
+    <Outlet/>
   )
 }
 
-export default User
+export default ServiceProviderLayout

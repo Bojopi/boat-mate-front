@@ -11,6 +11,7 @@ const Principal = () => {
         <SectionTitle 
             title1="Maximizing connectivity"
             title2="in the boating industry"
+            btnLabel="Learn More"
             img="https://images.squarespace-cdn.com/content/v1/634f43133040660154fd193a/54c3355d-4b60-4ed9-a168-e45abec1ea61/nicol-JrMzz7jUD5s-unsplash.png"
          />
         <hr />
