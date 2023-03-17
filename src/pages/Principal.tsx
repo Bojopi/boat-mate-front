@@ -1,7 +1,7 @@
 import CardComponent from "../components/card"
 import FooterComponent from "../components/footer"
-import MenuBar from "../components/menu-bar"
-import SectionTitle from "../components/section-title"
+import MenuBar from "../components/menuBar"
+import SectionTitle from "../components/sectionTitle"
 
 
 const Principal = () => {

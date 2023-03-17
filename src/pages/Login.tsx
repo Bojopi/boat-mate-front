@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import {FormProvider, useForm} from "react-hook-form";
 
 import { Toast } from 'primereact/toast';
@@ -19,6 +20,8 @@ const Login: React.FC = () => {
     const toast = useRef<Toast>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
+    const navigate = useNavigate()
+
     const methods = useForm<FormProps>({
         defaultValues: {
             username: '',
@@ -38,7 +41,8 @@ const Login: React.FC = () => {
         if(formData.username == 'bojopi' && formData.password == '123456') {
             setTimeout(() => {
                 setLoading(false);
-                window.location.href = '/user';
+                navigate('/user')
+                // window.location.href = '/user';
             }, 1000);
         }
         else {
@@ -100,11 +104,15 @@ const Login: React.FC = () => {
                                         <ErrorMessage>{errors.username.message}</ErrorMessage>
                                     )}
                                 </InputWrapper>
-                                <p className='w-full text-center text-sm font-medium text-[#373A85]'>New to BoatMate? <a href='/register' className='text-[#00CBA4] hover:underline'>Create account</a></p>
+                                <p className='w-full text-center text-sm font-medium text-[#373A85]'>New to BoatMate? <Link to='/register' className='text-[#00CBA4] hover:underline'>Create account</Link></p>
                             </div>
 
                             <div className="mt-4 flex items-center justify-between">
-                                <a href="/forgot-password" className='text-sm font-medium text-[#00CBA4] hover:underline'>Forgot password?</a>
+                                <Link 
+                                    className='text-sm font-medium text-[#00CBA4] hover:underline' 
+                                    to={'/forgot-password'}>
+                                        Forgot password?
+                                </Link>
                                 <button type='submit' className='p-3 bg-[#109EDA] hover:bg-[#0E8FC7] text-white rounded-md hover:transition'>SIGN IN</button>
                             </div>
                         </form>

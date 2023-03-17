@@ -47,7 +47,7 @@ export default function MenuBar() {
 
     return (
         <div className="card">
-            <Menubar start={start} end={end} className="bg-white shadow-md md:pl-64 md:pr-64 fixed w-full z-10" />
+            <Menubar start={start} end={end} className="bg-white shadow-md md:pl-64 md:pr-64 fixed w-full z-10" style={{'borderRadius': 0}} />
         </div>
     )
 };
