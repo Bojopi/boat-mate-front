@@ -66,7 +66,7 @@ const Login: React.FC = () => {
             style={{'backgroundImage': "url('https://i.postimg.cc/qv8LyXWs/tomas-malik-FHAHn-F9-C0-Sw-unsplash.jpg')"}}>
             <div></div>
         </div>
-        <div className="absolute container mx-auto mt-36 md:mt-36 p-5 md:flex md:justify-center">
+        <div className="absolute container mx-auto mt-36 p-5 md:flex md:justify-center">
             <div className='bg-white w-full md:w-2/4 rounded-lg shadow-2xl p-10 flex flex-col items-center'>
                 <div className='w-full flex justify-between'>
                     <img
