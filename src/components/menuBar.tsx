@@ -37,7 +37,7 @@ export default function MenuBar() {
     return (
         <div className="fixed w-full z-10">
             <Menubar start={start} end={end} className="bg-white shadow-md md:pl-64 md:pr-64 z-10" style={{'borderRadius': 0}} />
-            <div className='container bg-gray-200 shadow-sm'>
+            <div className='w-full bg-gray-200 shadow-sm'>
                 <ul className='flex flex-row justify-between md:justify-start md:px-0 py-3 text-xs md:text-sm text-gray-600 font-medium tracking-wider'>
                     <li className='px-3 md:px-5 border-r-2 border-gray-500 hover:text-black'><Link to={'/'}>Boats</Link></li>
                     <li className='px-3 md:px-5 border-r-2 border-gray-500 hover:text-black'><Link to={'/'}>Jetskis</Link></li>
