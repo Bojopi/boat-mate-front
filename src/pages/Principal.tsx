@@ -1,14 +1,105 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+    faGear,
+    faSheetPlastic,
+    faHammer,
+    faSailboat,
+    faBrush,
+    faPaintRoller,
+    faVolumeHigh,
+    faBroom,
+    faBolt,
+    faScrewdriverWrench,
+} from "@fortawesome/free-solid-svg-icons"
+
 import CardComponent from "../components/card"
 import FooterComponent from "../components/footer"
 import MenuBar from "../components/menuBar"
 import SectionTitle from "../components/sectionTitle"
+import { RaitingComponent } from '../components/rating';
 
 
 const Principal = () => {
+
+    const items = [
+        {
+            name: "Engine Service",
+            rate: 1,
+            price: '$100',
+            img: <FontAwesomeIcon icon={faGear} style={{color: "#373a85",}} className='text-2xl' />,
+        },
+        {
+            name: "Boat Wraps",
+            rate: 1,
+            price: '$100',
+            img: <FontAwesomeIcon icon={faSheetPlastic} style={{color: "#373a85",}} className='text-2xl' />,
+        },
+        {
+            name: "Fiberglass Repair",
+            rate: 1,
+            price: '$100',
+            img: <FontAwesomeIcon icon={faHammer} style={{color: "#373a85",}} className='text-2xl' />,
+        },
+        {
+            name: "Canvas/Bi Mini Tops",
+            rate: 1,
+            price: '$100',
+            img: <FontAwesomeIcon icon={faSailboat} style={{color: "#373a85",}} className='text-2xl' />,
+        },
+        {
+            name: "T-tops",
+            rate: 1,
+            price: '$100',
+            img: <FontAwesomeIcon icon={faSailboat} style={{color: "#373a85",}} className='text-2xl' />,
+        },
+        {
+            name: "Upholstery",
+            rate: 1,
+            price: '$100',
+            img: <FontAwesomeIcon icon={faBrush} style={{color: "#373a85",}} className='text-2xl' />,
+        },
+        {
+            name: "Barnacle Scraping",
+            rate: 1,
+            price: '$100',
+            img: <FontAwesomeIcon icon={faGear} style={{color: "#373a85",}} className='text-2xl' />,
+        },
+        {
+            name: "Maintenance & Repair",
+            rate: 1,
+            price: '$100',
+            img: <FontAwesomeIcon icon={faScrewdriverWrench} style={{color: "#373a85",}} className='text-2xl' />,
+        },
+        {
+            name: "Electronics",
+            rate: 1,
+            price: '$100',
+            img: <FontAwesomeIcon icon={faBolt} style={{color: "#373a85",}} className='text-2xl' />,
+        },
+        {
+            name: "Hull Cleaning",
+            rate: 1,
+            price: '$100',
+            img: <FontAwesomeIcon icon={faBroom} style={{color: "#373a85",}} className='text-2xl' />,
+        },
+        {
+            name: "Bottom Painting",
+            rate: 1,
+            price: '$100',
+            img: <FontAwesomeIcon icon={faPaintRoller} style={{color: "#373a85",}} className='text-2xl' />,
+        },
+        {
+            name: "Sound & Entertainment",
+            rate: 1,
+            price: '$100',
+            img: <FontAwesomeIcon icon={faVolumeHigh} style={{color: "#373a85",}} className='text-2xl' />,
+        },
+    ]
+
   return (
     <>
         <MenuBar />
-        <SectionTitle 
+        <SectionTitle
             title1="Maximizing connectivity"
             title2="in the boating industry"
             btnLabel="Learn More"
@@ -37,6 +128,26 @@ const Principal = () => {
             >
                 <p>Do you specialize in boat or maritime services? We can help you generate leads and reach the right customers.</p>
             </CardComponent>
+        </div>
+        <div className="container p-10 md:py-10 md:px-28">
+            <p className="text-2xl font-extrabold">Popular projects near you</p>
+            <div className="w-full mt-5 grid grid-cols-1 md:grid-cols-4 shadow-md">
+                {items.map((item: any, i: number) => (
+                    <div className="w-full p-5 border flex flex-row items-center gap-4" key={i}>
+                        <div className="w-8">
+                            {item.img}
+                        </div>
+                        <div className="block">
+                            <p>{item.name}</p>
+                            <p className="text-sm font-bold py-2">{item.price}</p>
+                            <RaitingComponent value={item.rate} />
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+        <div className="container bg-[#addaee] px-28">
+            hola mundo
         </div>
         <FooterComponent />
     </>

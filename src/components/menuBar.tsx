@@ -3,6 +3,7 @@ import React, { useRef } from 'react'
 import { Menu } from 'primereact/menu';
 import { Menubar } from 'primereact/menubar';
 import { Toast } from 'primereact/toast';
+import { Link } from 'react-router-dom';
 
 export default function MenuBar() {
     const menu = useRef<any>(null);
@@ -17,18 +18,6 @@ export default function MenuBar() {
             label: 'Sign in',
             url: '/login',
         },
-        { separator: true, },
-        {
-            label: 'About Us',
-            items: [
-                {label: 'What we do'},
-                {label: 'Partners'},
-                {label: 'Contact'}
-            ]
-        },
-        { separator: true },
-        {label: 'News'},
-        {label: 'Services'}
     ];
 
     const start = <img
@@ -36,7 +25,7 @@ export default function MenuBar() {
                     src="https://images.squarespace-cdn.com/content/v1/634f43133040660154fd193a/07d993cf-6c35-46b4-a3d8-2c26c53b2958/Biggest_BoatMate-removebg-preview.png?format=1500w"
                     className="mr-2 h-14 md:h-20"></img>;
     const end = <>
-        <a  className='mr-5 font-semibold cursor-pointer hover:underline' >Join the Club</a>
+        <a  className='mr-5 font-semibold cursor-pointer hover:underline' >Join Our Pro Network</a>
         <Toast ref={toast}></Toast>
         <Menu
             model={itemsMenu}
@@ -46,8 +35,17 @@ export default function MenuBar() {
         </>;
 
     return (
-        <div className="card">
-            <Menubar start={start} end={end} className="bg-white shadow-md md:pl-64 md:pr-64 fixed w-full z-10" style={{'borderRadius': 0}} />
+        <div className="fixed w-full z-10">
+            <Menubar start={start} end={end} className="bg-white shadow-md md:pl-64 md:pr-64 z-10" style={{'borderRadius': 0}} />
+            <div className='container bg-gray-200 shadow-sm'>
+                <ul className='flex flex-row justify-between md:justify-start px-2 md:px-0 py-3 text-xs md:text-sm text-gray-600 font-medium tracking-wider'>
+                    <li className='px-3 md:px-5 border-r-2 border-gray-500 hover:text-black'><Link to={'/'}>Boats</Link></li>
+                    <li className='px-3 md:px-5 border-r-2 border-gray-500 hover:text-black'><Link to={'/'}>Jetskis</Link></li>
+                    <li className='px-3 md:px-5 border-r-2 border-gray-500 hover:text-black'><Link to={'/'}>Dock & Storage</Link></li>
+                    <li className='px-3 md:px-5 border-r-2 border-gray-500 hover:text-black'><Link to={'/'}>Insurance</Link></li>
+                    <li className='px-3 md:px-5 hover:text-black'><Link to={'/'}>More</Link></li>
+                </ul>
+            </div>
         </div>
     )
 };

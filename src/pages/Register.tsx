@@ -88,6 +88,7 @@ const Register: React.FC = () => {
             c_password:     '',
             select_country: '',
         },
+        mode: 'all'
     });
 
     const {
@@ -95,13 +96,18 @@ const Register: React.FC = () => {
         getValues,
         handleSubmit,
         setError,
-        formState: {errors},
+        formState: {errors, isValid},
     } = methods;
 
     const onSubmit = (formData: FormProps) => {
-        console.log(formData);
-        setLoading(true);
-        console.log(errors)
+        console.log(formData, errors);
+        if(formData.password !== formData.c_password) {
+            toast.current?.show({severity:'error', summary:'Error', detail: 'The passwords must be the same.', life: 4000});
+        }
+        // if(isValid && methods.getValues('password') === methods.getValues('c_password')) {
+        //     setLoading(true);
+        //     console.log(formData);
+        // }
     };
 
     const onErrors = () => {
@@ -110,7 +116,7 @@ const Register: React.FC = () => {
 
     const filterCountries = (value: string) => {
         setSearchCountryIsOpen(true);
-        setSearchCountries([...countries.filter((item: RESTCountriesInterface) => item.name.common.toLowerCase().indexOf(value.toLowerCase()) > -1 )].slice(0, 5));
+        setSearchCountries([...countries.filter((item: RESTCountriesInterface) => item.name.common.toLowerCase().indexOf(value.toLowerCase()) > -1 )]);
     };
 
     const resultCountry = (value: string) => {
@@ -119,24 +125,35 @@ const Register: React.FC = () => {
     };
 
     const handleClickOutside = (event: any) => {
-        const element: any = document.getElementById('select_country');
-        if(!element.contains(event.target)){
-            setSearchCountryIsOpen(false);
+        if(document.getElementById('select_country')) {
+            const element: any = document.getElementById('select_country');
+            if(!element.contains(event.target)){
+                setSearchCountryIsOpen(false);
+            }
         }
     }
 
     const nextStep = () => {
-        setActiveIndex(activeIndex + 1);
+        setActiveIndex(cur => cur + 1);
     }
 
     const renderButton = () => {
-        if(activeIndex < 2) {
-            return (
-                <button type='button' className='p-3 text-xs md:text-base bg-[#109EDA] hover:bg-[#0E8FC7] text-white rounded-md hover:transition' onClick={nextStep}>Next Step</button>
-            )
+        if(activeIndex > 2) {
+            return undefined;
         } else if(activeIndex === 2) {
             return (
-                <button type='submit' className='p-3 text-xs md:text-base bg-[#109EDA] hover:bg-[#0E8FC7] text-white rounded-md hover:transition'>SIGN UP</button>
+                <button
+                    type='submit' 
+                    className='p-3 text-xs md:text-base bg-[#109EDA] hover:bg-[#0E8FC7] text-white rounded-md hover:transition disabled:bg-gray-400'
+                    disabled={!isValid}>SIGN UP</button>
+            )
+        } else {
+            return (
+                <button
+                    type='button'
+                    className='p-3 text-xs md:text-base bg-[#109EDA] hover:bg-[#0E8FC7] text-white rounded-md hover:transition disabled:bg-gray-400'
+                    onClick={nextStep}
+                    disabled={!isValid}>Next Step</button>
             )
         }
     }
@@ -163,7 +180,7 @@ const Register: React.FC = () => {
                     <Steps model={items} activeIndex={activeIndex} readOnly={true} />
                 </div>
                 <FormProvider {...methods}>
-                        <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+                        <form onSubmit={handleSubmit(onSubmit, onErrors)} className="w-full">
                             {
                                 activeIndex === 0 ?
                                 <div className="grid grid-cols-1 gap-y-3 p-5">
@@ -185,7 +202,10 @@ const Register: React.FC = () => {
                                                 id='email'
                                                 name='email'
                                                 type='email'
-                                                rules={{required: "Email is required"}}
+                                                rules={{
+                                                    required: "Email is required",
+                                                    pattern: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9]{3}$/g
+                                                }}
                                             />
                                         {errors?.email?.message && (
                                             <ErrorMessage>{errors.email.message}</ErrorMessage>
@@ -197,7 +217,10 @@ const Register: React.FC = () => {
                                                 id='phone'
                                                 name='phone'
                                                 type='tel'
-                                                rules={{required: "Phone is required"}}
+                                                rules={{
+                                                    required: "Phone is required",
+                                                    pattern: /^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/gm
+                                                }}
                                             />
                                         {errors?.phone?.message && (
                                             <ErrorMessage>{errors.phone.message}</ErrorMessage>
@@ -223,16 +246,17 @@ const Register: React.FC = () => {
                                                     }}
                                                 />
                                                 { searchCountryIsOpen && (
-                                                    <ul className="absolute mt-1 w-full overflow-hidden rounded-md bg-white border border-gray-300 shadow-md">
+                                                    <ul className="absolute mt-1 w-full h-auto max-h-60 overflow-y-auto rounded-md bg-white border border-gray-300 shadow-md">
                                                         {searchCountries.map((country: RESTCountriesInterface, i: number) => (
                                                             <li
                                                                 key={i}
-                                                                className="cursor-pointer py-3 px-3 hover:bg-gray-200 text-sm font-medium text-gray-600 border-b border-b-gray-300"
+                                                                className="flex flex-row cursor-pointer py-3 px-3 hover:bg-gray-200 text-sm font-medium text-gray-600 border-b border-b-gray-300"
                                                                 onClick={() => {
                                                                     resultCountry(country.name.common);
                                                                 }}
                                                             >
-                                                                {country.name.common}
+                                                                <img src={country.flags.svg} alt={country.name.common} className='w-5' />
+                                                                <p className='pl-5'>{country.name.common}</p>
                                                             </li>
                                                         ))}
                                                     </ul>
@@ -277,7 +301,10 @@ const Register: React.FC = () => {
                                                 id='username'
                                                 name='username'
                                                 type='text'
-                                                rules={{required: "Username is required"}}
+                                                rules={{
+                                                    required: "Username is required",
+                                                    pattern: /(?!.*[\.\-\_]{2,})^[a-zA-Z0-9\.\-\_]{6,24}$/gm
+                                                }}
                                             />
                                         {errors?.username?.message && (
                                             <ErrorMessage>{errors.username.message}</ErrorMessage>
@@ -289,11 +316,20 @@ const Register: React.FC = () => {
                                                 id='password'
                                                 name='password'
                                                 type='password'
-                                                rules={{required: "Password is required"}}
+                                                rules={{
+                                                    required: "Password is required",
+                                                    pattern: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{10,}$/g,
+                                                }}
                                             />
                                         {errors?.password?.message && (
                                             <ErrorMessage>{errors.password.message}</ErrorMessage>
                                         )}
+                                        <ul className='w-full grid grid-cols-1 md:grid-cols-2 md:gap-x-5 md:gap-y-2 text-xs'>
+                                            <li><i className={methods.getValues('password').match(/[a-zA-Z]/gm) != null ? "pi pi-check text-green-500": 'pi pi-times text-red-500'} style={{'fontSize': '12px'}}></i> One letter (a-z)</li>
+                                            <li><i className={methods.getValues('password').match(/.{10,}/gm) != null ? "pi pi-check text-green-500": 'pi pi-times text-red-500'} style={{'fontSize': '12px'}}></i> 10 characters minimum</li>
+                                            <li><i className={methods.getValues('password').match(/\d/gm) != null ? "pi pi-check text-green-500": 'pi pi-times text-red-500'} style={{'fontSize': '12px'}}></i> One number (0-9)</li>
+                                            <li><i className={methods.getValues('password').match(/[@$\-_]/gm) != null ? "pi pi-check text-green-500": 'pi pi-times text-red-500'} style={{'fontSize': '12px'}}></i> One special character</li>
+                                        </ul>
                                     </InputWrapper>
                                     <InputWrapper outerClassName="col-span-12">
                                             <Label id='c_password'>Confirm Password *</Label>
@@ -301,7 +337,12 @@ const Register: React.FC = () => {
                                                 id='c_password'
                                                 name='c_password'
                                                 type='password'
-                                                rules={{required: "Confirm Password is required"}}
+                                                rules={{
+                                                    required: "Confirm Password is required",
+                                                    pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
+                                                    validate: (value) => 
+                                                        value === methods.getValues('password') || 'The passwords do not match'
+                                                }}
                                             />
                                         {errors?.c_password?.message && (
                                             <ErrorMessage>{errors.c_password.message}</ErrorMessage>
