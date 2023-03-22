@@ -23,7 +23,7 @@ export default function MenuBar() {
     const start = <img
                     alt="logo"
                     src="https://images.squarespace-cdn.com/content/v1/634f43133040660154fd193a/07d993cf-6c35-46b4-a3d8-2c26c53b2958/Biggest_BoatMate-removebg-preview.png?format=1500w"
-                    className="mr-2 h-14 md:h-20"></img>;
+                    className="mr-2 h-14 lg:h-20"></img>;
     const end = <>
         <a  className='mr-5 font-semibold cursor-pointer hover:underline' >Join Our Pro Network</a>
         <Toast ref={toast}></Toast>

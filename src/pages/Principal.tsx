@@ -107,11 +107,11 @@ const Principal = () => {
             img="https://images.squarespace-cdn.com/content/v1/634f43133040660154fd193a/54c3355d-4b60-4ed9-a168-e45abec1ea61/nicol-JrMzz7jUD5s-unsplash.png"
          />
         <hr />
-        <div className="w-full p-10 md:pl-28 text-white" style={{'backgroundColor': '#00CBA4'}}>
-            <h1 className="text-xl w-full md:text-4xl font-bold flex md:w-2/3 tracking-wide">The modern way to get connected with trustworthy and vetted marine service providers</h1>
-            <p className="w-full pt-5 md:w-2/3 tracking-wide">Mariners and novelty boat owners alike understand it’s all about who you know in the boating and marine industry. Let us make boating hassle-free for you!</p>
+        <div className="w-full p-10 lg:pl-28 text-white" style={{'backgroundColor': '#00CBA4'}}>
+            <h1 className="text-xl w-full lg:text-4xl font-bold flex lg:w-2/3 tracking-wide">The modern way to get connected with trustworthy and vetted marine service providers</h1>
+            <p className="w-full pt-5 lg:w-2/3 tracking-wide">Mariners and novelty boat owners alike understand it’s all about who you know in the boating and marine industry. Let us make boating hassle-free for you!</p>
         </div>
-        <div className="p-10 md:pl-28 md:pr-28 grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="p-10 lg:pl-28 lg:pr-28 grid grid-cols-1 lg:grid-cols-2 gap-5">
             <CardComponent
             footerVisibility={true}
             btnLabel={'Learn more'}
@@ -130,22 +130,22 @@ const Principal = () => {
                 <p>Do you specialize in boat or maritime services? We can help you generate leads and reach the right customers.</p>
             </CardComponent>
         </div>
-        <div className="w-full p-10 md:py-10 md:px-28">
+        <div className="w-full p-10 lg:py-10 lg:px-28">
             <p className="text-2xl font-extrabold">Popular projects near you</p>
-            <div className="w-full mt-5 grid grid-cols-2 md:grid-cols-4 shadow-md">
+            <div className="w-full mt-5 grid grid-cols-2 lg:grid-cols-4 shadow-md">
                 {items.map((item: any, i: number) => (
-                    <div className="w-full p-3 md:p-5 border flex flex-row items-center gap-4" key={i}>
+                    <div className="w-full p-3 lg:p-5 border flex flex-row items-center gap-4" key={i}>
                         <div className="w-8">
                             {item.img}
                         </div>
                         <div className="w-full">
-                            <p className="text-sm md:text-base">{item.name}</p>
-                            <div className="w-full md:hidden flex flex-row items-center gap-2 pt-1">
+                            <p className="text-sm lg:text-base">{item.name}</p>
+                            <div className="w-full lg:hidden flex flex-row items-center gap-2 pt-1">
                                 <i className="pi pi-star-fill text-yellow-400" style={{'fontSize': '12px'}}></i>
                                 <p className="w-full font-semibold text-xs">{reduceRating(item.rate)}</p>
                             </div>
-                            <p className="text-xs md:text-sm font-bold pt-1"><span className="font-light">from: </span>{item.price}</p>
-                            <div className="hidden md:flex pt-2">
+                            <p className="text-xs lg:text-sm font-bold pt-1"><span className="font-light">from: </span>{item.price}</p>
+                            <div className="hidden lg:flex pt-2">
                                 <RaitingComponent value={item.rate} />
                             </div>
                         </div>
