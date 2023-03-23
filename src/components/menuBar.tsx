@@ -25,7 +25,7 @@ export default function MenuBar() {
                     src="https://images.squarespace-cdn.com/content/v1/634f43133040660154fd193a/07d993cf-6c35-46b4-a3d8-2c26c53b2958/Biggest_BoatMate-removebg-preview.png?format=1500w"
                     className="mr-2 h-14 lg:h-20"></img>;
     const end = <>
-        <a  className='mr-5 font-semibold cursor-pointer hover:underline' >Join Our Pro Network</a>
+        <a  className='mr-5 font-bold cursor-pointer tracking-tighter hover:underline' >Join Our Pro Network</a>
         <Toast ref={toast}></Toast>
         <Menu
             model={itemsMenu}
@@ -36,9 +36,9 @@ export default function MenuBar() {
 
     return (
         <div className="fixed w-full z-10">
-            <Menubar start={start} end={end} className="bg-white shadow-md md:pl-64 md:pr-64 z-10" style={{'borderRadius': 0}} />
-            <div className='w-full bg-gray-200 shadow-sm'>
-                <ul className='flex flex-row justify-between md:justify-start md:px-0 py-3 text-xs md:text-sm text-gray-600 font-medium tracking-wider'>
+            <Menubar start={start} end={end} className="bg-white shadow-md z-10 lg:px-[10%]" style={{'borderRadius': 0}} />
+            <div className='w-full bg-gray-200 shadow-sm lg:pl-[9%]'>
+                <ul className='flex flex-row justify-between md:justify-start md:px-0 py-3 text-xs md:text-base text-gray-600 font-medium'>
                     <li className='px-3 md:px-5 border-r-2 border-gray-500 hover:text-black'><Link to={'/'}>Boats</Link></li>
                     <li className='px-3 md:px-5 border-r-2 border-gray-500 hover:text-black'><Link to={'/'}>Jetskis</Link></li>
                     <li className='px-3 md:px-5 border-r-2 border-gray-500 hover:text-black'><Link to={'/'}>Dock & Storage</Link></li>
